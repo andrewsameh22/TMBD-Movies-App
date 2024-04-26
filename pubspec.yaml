@@ -43,7 +43,7 @@ dependencies:
   go_router: ^14.0.1
   fancy_shimmer_image: ^2.0.3
   flutter_svg: ^2.0.10+1
-
+  gap: ^3.0.1
 
 
 dev_dependencies:

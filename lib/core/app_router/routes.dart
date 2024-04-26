@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tmdb_movies_app/core/app_router/pages_animations.dart';
+import 'package:tmdb_movies_app/movies/presentation/screens/movie_details_screen.dart';
 import 'package:tmdb_movies_app/movies/presentation/screens/movies_screen.dart';
 
 import 'animation_type.dart';
@@ -23,20 +24,21 @@ abstract class AppRouter {
         ),
       ),
 
-      // movies details screen
-      // GoRoute(
-      //   path: moviesDetailsScreen,
-      //   pageBuilder: (context, state) {
-      //     int? id =
-      //         state.extra as int;
-      //     return buildPageWithDefaultTransition<void>(
-      //       context: context,
-      //       state: state,
-      //       child: ResetPasswordScreen(data: data),
-      //       animationType: AnimationType.fadeTransitionAnimation,
-      //     );
-      //   },
-      // ),
+      //movies details screen
+      GoRoute(
+        path: moviesDetailsScreen,
+        pageBuilder: (context, state) {
+          int? id = state.extra as int;
+          return buildPageWithDefaultTransition<void>(
+            context: context,
+            state: state,
+            child: MovieDetailsScreen(
+              movieId: id,
+            ),
+            animationType: AnimationType.fadeTransitionAnimation,
+          );
+        },
+      ),
     ],
   );
 }

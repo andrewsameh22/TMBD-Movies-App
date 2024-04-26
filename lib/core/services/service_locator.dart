@@ -4,6 +4,7 @@ import 'package:tmdb_movies_app/movies/domain/repository/base_movies_repository.
 import 'package:tmdb_movies_app/movies/domain/usecases/get_popular_movies_usecase.dart';
 import 'package:tmdb_movies_app/movies/presentation/controllers/movies_cubit/movies_cubit.dart';
 
+import '../../movies/data/datasource/base_movies_remote_data_source.dart';
 import '../../movies/data/datasource/movies_remote_data_source.dart';
 
 final sl = GetIt.instance;
@@ -11,7 +12,8 @@ final sl = GetIt.instance;
 class ServiceLocator {
   void init() {
     ///Data Sources
-    sl.registerLazySingleton(() => MoviesRemoteDataSource);
+    sl.registerLazySingleton<BaseMoviesRemoteDataSource>(
+        () => MoviesRemoteDataSource());
 
     ///Repositories
     sl.registerLazySingleton<BaseMoviesRepository>(

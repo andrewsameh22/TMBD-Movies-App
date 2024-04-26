@@ -21,6 +21,13 @@ class MoviesApp extends StatelessWidget {
     return MaterialApp.router(
       title: AppStrings.appName,
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        scaffoldBackgroundColor: Colors.grey.shade900,
+        appBarTheme: AppBarTheme(
+            color: Colors.grey.shade800,
+            iconTheme: IconThemeData(color: Colors.white),
+            centerTitle: true),
+      ),
       routerConfig: AppRouter.router,
     );
   }

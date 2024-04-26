@@ -7,7 +7,7 @@ import '../entities/movie_entity.dart';
 class GetPopularMoviesUseCase {
   final BaseMoviesRepository baseMoviesRepository;
 
-  GetPopularMoviesUseCase(this.baseMoviesRepository);
+  GetPopularMoviesUseCase({required this.baseMoviesRepository});
 
   Future<Either<Failure, List<Movie>>> call() async {
     return await baseMoviesRepository.getPopularMovies();

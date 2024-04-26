@@ -28,12 +28,13 @@ abstract class AppRouter {
       GoRoute(
         path: moviesDetailsScreen,
         pageBuilder: (context, state) {
-          int? id = state.extra as int;
           return buildPageWithDefaultTransition<void>(
             context: context,
             state: state,
             child: MovieDetailsScreen(
-              movieId: id,
+              img: (state.extra as Map)['img'],
+              movieId: (state.extra as Map)['movieId'],
+              heroTag: (state.extra as Map)['heroTag'],
             ),
             animationType: AnimationType.fadeTransitionAnimation,
           );

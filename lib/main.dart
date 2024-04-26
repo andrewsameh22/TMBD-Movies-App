@@ -24,9 +24,14 @@ class MoviesApp extends StatelessWidget {
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.grey.shade900,
         appBarTheme: AppBarTheme(
-            color: Colors.grey.shade800,
-            iconTheme: IconThemeData(color: Colors.white),
-            centerTitle: true),
+          color: Colors.grey.shade800,
+          iconTheme: IconThemeData(color: Colors.white),
+          titleTextStyle: TextStyle(
+            color: Colors.white,
+            fontSize: 16,
+          ),
+          centerTitle: true,
+        ),
       ),
       routerConfig: AppRouter.router,
     );

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tmdb_movies_app/core/app_strings/app_strings.dart';
-import 'package:tmdb_movies_app/core/assets_data/assets_data.dart';
 
 import '../../../core/services/service_locator.dart';
 import '../components/movie_item_widget.dart';

@@ -5,6 +5,7 @@ import '../../../core/failures/exceptions.dart';
 import '../../../core/network/error_message_model.dart';
 import '../../../core/utils/api_constants.dart';
 import '../../domain/usecases/get_movie_details_usecase.dart';
+import '../models/movie_details_model/movie_details_model.dart';
 import '../models/movie_model/movie_model.dart';
 
 class MoviesRemoteDataSource extends BaseMoviesRemoteDataSource {
@@ -21,12 +22,12 @@ class MoviesRemoteDataSource extends BaseMoviesRemoteDataSource {
   }
 
   @override
-  Future<MovieModel> getMovieDetails(
+  Future<MovieDetailsModel> getMovieDetails(
       {required MovieDetailsParameters parameters}) async {
     final response = await Dio()
         .get(ApiConstants.movieDetailsEndpoint(movieId: parameters.movieId));
     if (response.statusCode == 200) {
-      return MovieModel.fromJson(response.data);
+      return MovieDetailsModel.fromJson(response.data);
     } else {
       throw ServerException(
           errorMessageModel: ErrorMessageModel.fromJson(response.data));

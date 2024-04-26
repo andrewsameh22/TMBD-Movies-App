@@ -1,6 +1,7 @@
 import 'package:get_it/get_it.dart';
 import 'package:tmdb_movies_app/movies/data/repository/movies_repository.dart';
 import 'package:tmdb_movies_app/movies/domain/repository/base_movies_repository.dart';
+import 'package:tmdb_movies_app/movies/domain/usecases/get_movie_details_usecase.dart';
 import 'package:tmdb_movies_app/movies/domain/usecases/get_popular_movies_usecase.dart';
 import 'package:tmdb_movies_app/movies/presentation/controllers/movie_details_cubit/movie_details_cubit.dart';
 import 'package:tmdb_movies_app/movies/presentation/controllers/movies_cubit/movies_cubit.dart';
@@ -23,6 +24,8 @@ class ServiceLocator {
     ///UseCases
     sl.registerLazySingleton(
         () => GetPopularMoviesUseCase(baseMoviesRepository: sl()));
+    sl.registerLazySingleton(
+        () => GetMovieDetailsUseCase(baseMoviesRepository: sl()));
 
     ///Cubit
     sl.registerFactory(() => MoviesCubit(

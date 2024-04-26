@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 
+import '../../../domain/entities/movie_details_entity.dart';
 import '../../../domain/entities/movie_entity.dart';
 import '../../../domain/usecases/get_movie_details_usecase.dart';
 
@@ -16,7 +17,7 @@ class MovieDetailsCubit extends Cubit<MovieDetailsState> {
 
   static MovieDetailsCubit get(context) => BlocProvider.of(context);
 
-  Movie? detailedMovie;
+  MovieDetails? detailedMovie;
 
   Future<void> fetchMovieDetails({required movieId}) async {
     emit(GetMovieDetailsLoadingState());

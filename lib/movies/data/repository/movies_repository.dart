@@ -5,6 +5,7 @@ import 'package:tmdb_movies_app/movies/domain/entities/movie_entity.dart';
 import 'package:tmdb_movies_app/movies/domain/repository/base_movies_repository.dart';
 
 import '../../../core/failures/exceptions.dart';
+import '../../domain/entities/movie_details_entity.dart';
 import '../../domain/usecases/get_movie_details_usecase.dart';
 
 class MoviesRepository extends BaseMoviesRepository {
@@ -23,7 +24,7 @@ class MoviesRepository extends BaseMoviesRepository {
   }
 
   @override
-  Future<Either<Failure, Movie>> getMovieDetails(
+  Future<Either<Failure, MovieDetails>> getMovieDetails(
       {required MovieDetailsParameters parameters}) async {
     final result = await baseMoviesRemoteDataSource.getMovieDetails(
         parameters: parameters);

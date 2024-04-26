@@ -4,6 +4,7 @@ import 'package:tmdb_movies_app/core/app_strings/app_strings.dart';
 
 import '../../../core/services/service_locator.dart';
 import '../components/movie_item_widget.dart';
+import '../components/pagination_button.dart';
 import '../controllers/movies_cubit/movies_cubit.dart';
 
 class MoviesScreen extends StatelessWidget {
@@ -12,7 +13,7 @@ class MoviesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => sl<MoviesCubit>()..fetchPopularMovies(),
+      create: (context) => sl<MoviesCubit>()..fetchPopularMovies(page: 1),
       child: BlocBuilder<MoviesCubit, MoviesState>(
         builder: (context, state) {
           var cubit = MoviesCubit.get(context);
@@ -21,13 +22,18 @@ class MoviesScreen extends StatelessWidget {
               backgroundColor: Colors.grey.shade900,
               appBar: null,
               body: RefreshIndicator(
-                onRefresh: sl<MoviesCubit>().fetchPopularMovies,
+                onRefresh: () {
+                  return cubit.fetchPopularMovies(
+                    page: 1,
+                  );
+                },
                 child: CustomScrollView(
+                  controller: cubit.scrollController,
                   physics: const BouncingScrollPhysics(),
                   slivers: [
                     const SliverToBoxAdapter(
                       child: Padding(
-                        padding: EdgeInsets.all(8.0),
+                        padding: EdgeInsets.all(15.0),
                         child: Text(
                           AppStrings.popularMovies,
                           style: TextStyle(
@@ -37,7 +43,7 @@ class MoviesScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    if (cubit.popularMoviesList != null)
+                    if (cubit.popularMoviesList != null) ...[
                       SliverList(
                         delegate: SliverChildBuilderDelegate(
                           (BuildContext context, int index) {
@@ -48,6 +54,60 @@ class MoviesScreen extends StatelessWidget {
                               0, // Adjust the number of items as needed
                         ),
                       ),
+                      SliverToBoxAdapter(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 10.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              PaginationButton(
+                                title: 'Previous',
+                                onPressed: (cubit.selectedPage == 1)
+                                    ? null
+                                    : () {
+                                        if (cubit.selectedPage > 1) {
+                                          cubit.selectedPage--;
+                                          cubit
+                                              .fetchPopularMovies(
+                                                  page: cubit.selectedPage)
+                                              .then((value) =>
+                                                  cubit.scrollToTop());
+                                          cubit.refreshCubit();
+                                        }
+                                      },
+                              ),
+                              Text(
+                                cubit.selectedPage.toString(),
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18,
+                                ),
+                              ),
+                              PaginationButton(
+                                title: 'Next',
+                                onPressed:
+                                    (cubit.selectedPage == cubit.totalPages)
+                                        ? null
+                                        : () {
+                                            if (cubit.selectedPage <
+                                                cubit.totalPages) {
+                                              cubit.selectedPage++;
+                                              cubit
+                                                  .fetchPopularMovies(
+                                                      page: cubit.selectedPage)
+                                                  .then((value) =>
+                                                      cubit.scrollToTop());
+
+                                              cubit.refreshCubit();
+                                            }
+                                          },
+                              ),
+                            ],
+                          ),
+                        ),
+                      )
+                    ],
                   ],
                 ),
               ),

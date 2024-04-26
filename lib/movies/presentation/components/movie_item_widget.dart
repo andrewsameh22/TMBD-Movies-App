@@ -18,7 +18,10 @@ class MovieItemWidget extends StatelessWidget {
     final heroTag = 'moviePoster_${movie?.id ?? 0}';
 
     return Padding(
-      padding: const EdgeInsets.all(10.0),
+      padding: const EdgeInsets.symmetric(
+        horizontal: 14.0,
+        vertical: 8.0,
+      ),
       child: InkWell(
         onTap: () {
           GoRouter.of(context).push(

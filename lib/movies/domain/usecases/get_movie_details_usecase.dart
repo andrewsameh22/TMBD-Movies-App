@@ -5,7 +5,6 @@ import 'package:tmdb_movies_app/core/failures/failure.dart';
 import 'package:tmdb_movies_app/movies/domain/repository/base_movies_repository.dart';
 
 import '../entities/movie_details_entity.dart';
-import '../entities/movie_entity.dart';
 
 class GetMovieDetailsUseCase
     extends BaseUseCase<MovieDetails, MovieDetailsParameters> {

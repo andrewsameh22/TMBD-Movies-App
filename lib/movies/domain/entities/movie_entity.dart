@@ -1,5 +1,24 @@
 import 'package:equatable/equatable.dart';
 
+class MoviesDataEntity extends Equatable {
+  final List<Movie> movies;
+  final int currentPage;
+  final int totalPages;
+
+  const MoviesDataEntity({
+    required this.movies,
+    required this.currentPage,
+    required this.totalPages,
+  });
+
+  @override
+  List<Object> get props => [
+        movies,
+        currentPage,
+        totalPages,
+      ];
+}
+
 class Movie extends Equatable {
   final int id;
   final String title;

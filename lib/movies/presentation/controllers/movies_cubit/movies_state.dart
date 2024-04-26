@@ -5,6 +5,8 @@ abstract class MoviesState {}
 
 class MoviesInitial extends MoviesState {}
 
+class MoviesRefresh extends MoviesState {}
+
 class GetPopularMoviesLoadingState extends MoviesState {}
 
 class GetPopularMoviesSuccessState extends MoviesState {}

@@ -7,6 +7,8 @@ import 'package:tmdb_movies_app/movies/domain/repository/base_movies_repository.
 import '../../../core/failures/exceptions.dart';
 import '../../domain/entities/movie_details_entity.dart';
 import '../../domain/usecases/get_movie_details_usecase.dart';
+import '../../domain/usecases/get_popular_movies_usecase.dart';
+import '../models/movie_model/movie_model.dart';
 
 class MoviesRepository extends BaseMoviesRepository {
   final BaseMoviesRemoteDataSource baseMoviesRemoteDataSource;
@@ -14,8 +16,10 @@ class MoviesRepository extends BaseMoviesRepository {
   MoviesRepository({required this.baseMoviesRemoteDataSource});
 
   @override
-  Future<Either<Failure, List<Movie>>> getPopularMovies() async {
-    final result = await baseMoviesRemoteDataSource.getPopularMovies();
+  Future<Either<Failure, MoviesDataModel>> getPopularMovies(
+      {required PopularMoviesParameters parameters}) async {
+    final result = await baseMoviesRemoteDataSource.getPopularMovies(
+        parameters: parameters);
     try {
       return Right(result);
     } on ServerException catch (failure) {

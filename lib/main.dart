@@ -6,11 +6,8 @@ import 'package:tmdb_movies_app/movies/domain/entities/movie_entity.dart';
 import 'core/app_router/routes.dart';
 import 'core/app_strings/app_strings.dart';
 import 'core/bloc_helper/my_bloc_observer.dart';
-import 'core/constants/constants.dart';
 import 'core/services/service_locator.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-
-import 'movies/domain/entities/movie_entity_adapter.dart';
 
 void main() async {
   ServiceLocator().init();

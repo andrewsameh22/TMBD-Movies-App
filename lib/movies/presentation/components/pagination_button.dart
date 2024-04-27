@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../core/styles/app_colors.dart';
+
 class PaginationButton extends StatelessWidget {
   final String? title;
   final Function()? onPressed;
@@ -13,8 +15,12 @@ class PaginationButton extends StatelessWidget {
       onPressed: onPressed,
       color: Colors.white,
       disabledColor: Colors.grey,
-      disabledTextColor: Colors.black,
-      child: Text(title ?? ''),
+      disabledTextColor: AppColors.tmdbBlue,
+      child: Text(
+        title ?? '',
+        style: const TextStyle(
+            color: AppColors.tmdbBlue, fontWeight: FontWeight.bold),
+      ),
     );
   }
 }

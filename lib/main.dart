@@ -29,8 +29,8 @@ class MoviesApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         scaffoldBackgroundColor: AppColors.tmdbBlue,
-        appBarTheme: AppBarTheme(
-          color: Color(0xff02457a),
+        appBarTheme: const AppBarTheme(
+          color: AppColors.appBarBlue,
           iconTheme: const IconThemeData(color: Colors.white),
           titleTextStyle: const TextStyle(
             color: Colors.white,

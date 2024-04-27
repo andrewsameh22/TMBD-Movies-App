@@ -32,7 +32,7 @@ class StaticRatingBarWidget extends StatelessWidget {
         Text(
           rating.toStringAsFixed(1) ?? '',
           style: const TextStyle(
-            color: Colors.white60,
+            color: Colors.white,
             fontSize: 18,
             fontWeight: FontWeight.w400,
           ),

@@ -29,7 +29,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
   }
 
   void initNavigateToHomeView() {
-    Future.delayed(const Duration(seconds: 5), () async {
+    Future.delayed(const Duration(seconds: 3), () async {
       GoRouter.of(context).go(AppRouter.moviesScreen);
     });
   }

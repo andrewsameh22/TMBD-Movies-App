@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tmdb_movies_app/core/app_strings/app_strings.dart';
+import 'package:tmdb_movies_app/core/assets_data/assets_data.dart';
 
 import '../../../core/services/service_locator.dart';
 import '../components/movie_item_widget.dart';
@@ -19,7 +20,6 @@ class MoviesScreen extends StatelessWidget {
           var cubit = MoviesCubit.get(context);
           return SafeArea(
             child: Scaffold(
-              backgroundColor: Colors.grey.shade900,
               appBar: null,
               body: RefreshIndicator(
                 onRefresh: () {
@@ -31,6 +31,9 @@ class MoviesScreen extends StatelessWidget {
                   controller: cubit.scrollController,
                   physics: const BouncingScrollPhysics(),
                   slivers: [
+                    SliverToBoxAdapter(
+                      child: Image.asset(AssetsData.header2),
+                    ),
                     const SliverToBoxAdapter(
                       child: Padding(
                         padding: EdgeInsets.all(15.0),
@@ -61,7 +64,7 @@ class MoviesScreen extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
                               PaginationButton(
-                                title: 'Previous',
+                                title: AppStrings.previous,
                                 onPressed: (cubit.selectedPage == 1)
                                     ? null
                                     : () {
@@ -85,7 +88,7 @@ class MoviesScreen extends StatelessWidget {
                                 ),
                               ),
                               PaginationButton(
-                                title: 'Next',
+                                title: AppStrings.next,
                                 onPressed:
                                     (cubit.selectedPage == cubit.totalPages)
                                         ? null

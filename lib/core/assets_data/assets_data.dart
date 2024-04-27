@@ -6,7 +6,7 @@ class AssetsData {
   static String headerTitle = "$svgsPath/tmdb_header.png";
 
   // logo
-  static String appLogo = "$svgsPath/app_logo.png";
+  static String appLogo = "$imagesPath/app_logo.png";
 
   //images
   static String header = "$imagesPath/header.jpeg";

@@ -4,6 +4,7 @@ import 'package:tmdb_movies_app/core/app_strings/app_strings.dart';
 import 'package:tmdb_movies_app/core/assets_data/assets_data.dart';
 
 import '../../../core/services/service_locator.dart';
+import '../../../core/styles/app_colors.dart';
 import '../components/movie_item_widget.dart';
 import '../components/pagination_button.dart';
 import '../controllers/movies_cubit/movies_cubit.dart';
@@ -32,7 +33,13 @@ class MoviesScreen extends StatelessWidget {
                   physics: const BouncingScrollPhysics(),
                   slivers: [
                     SliverToBoxAdapter(
-                      child: Image.asset(AssetsData.header2),
+                      child: Container(
+                        color: AppColors.tmdbBlue,
+                        child: Image.asset(
+                          AssetsData.appLogo,
+                          height: 150,
+                        ),
+                      ),
                     ),
                     const SliverToBoxAdapter(
                       child: Padding(

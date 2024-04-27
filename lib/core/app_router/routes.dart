@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tmdb_movies_app/core/app_router/pages_animations.dart';
+import 'package:tmdb_movies_app/core/splash_screen/splash_screen.dart';
 import 'package:tmdb_movies_app/movies/presentation/screens/movie_details_screen.dart';
 import 'package:tmdb_movies_app/movies/presentation/screens/movies_screen.dart';
 
@@ -8,11 +9,22 @@ import 'animation_type.dart';
 
 abstract class AppRouter {
   //Start
-  static const moviesScreen = '/';
+  static const splashScreen = '/';
+  static const moviesScreen = '/moviesScreen';
   static const moviesDetailsScreen = '/moviesDetailsScreen';
 
   static final router = GoRouter(
     routes: [
+      //splash screen
+      GoRoute(
+        path: splashScreen,
+        pageBuilder: (context, state) => buildPageWithDefaultTransition<void>(
+          context: context,
+          state: state,
+          child: const SplashScreen(),
+          animationType: AnimationType.fadeTransitionAnimation,
+        ),
+      ),
       //movies screen
       GoRoute(
         path: moviesScreen,

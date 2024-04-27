@@ -47,7 +47,7 @@ dependencies:
   flutter_rating_bar: ^4.0.1
   hive: ^2.2.3
   hive_flutter: ^1.1.0
-
+  flutter_launcher_icons: ^0.13.1
 
 
 targets:
@@ -59,6 +59,15 @@ targets:
         sources:
           - "**/*.dart"
           - "movie_entity.dart" # Add your entity file here
+
+
+flutter_launcher_icons:
+  image_path: "assets/images/app_logo.png"
+  android: true
+  ios: true
+  remove_alpha_ios: true
+  adaptive_icon_foreground: "assets/images/app_logo.png"
+  adaptive_icon_background: "#032541"
 
 
 dev_dependencies:

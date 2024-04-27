@@ -1,15 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hive/hive.dart';
+import 'package:tmdb_movies_app/movies/domain/entities/movie_entity.dart';
 
 import 'core/app_router/routes.dart';
 import 'core/app_strings/app_strings.dart';
 import 'core/bloc_helper/my_bloc_observer.dart';
+import 'core/constants/constants.dart';
 import 'core/services/service_locator.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
-void main() {
+import 'movies/domain/entities/movie_entity_adapter.dart';
+
+void main() async {
   ServiceLocator().init();
   Bloc.observer = MyBlocObserver();
-
+  await Hive.initFlutter();
+  Hive.registerAdapter(MovieAdapter());
   runApp(const MoviesApp());
 }
 

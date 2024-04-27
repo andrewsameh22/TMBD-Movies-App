@@ -34,7 +34,7 @@ class MoviesCubit extends Cubit<MoviesState> {
   void scrollToTop() {
     scrollController.animateTo(
       0.0,
-      duration: Duration(milliseconds: 600), // Adjust duration as needed
+      duration: const Duration(milliseconds: 600), // Adjust duration as needed
       curve: Curves.easeIn, // Adjust curve as needed
     );
   }
@@ -50,15 +50,14 @@ class MoviesCubit extends Cubit<MoviesState> {
         if (locallySavedMovies?.length != 0) {
           popularMoviesList = locallySavedMovies;
           emit(GetLocalPopularMoviesSuccessState());
-          print('localMovies: ${locallySavedMovies.length}');
         }
       }
       final result = await getPopularMoviesUseCase(
           PopularMoviesParameters(pageNumber: page));
       result.fold(
-        (failure) =>
+            (failure) =>
             emit(GetPopularMoviesFailureState(message: failure.message)),
-        (data) {
+            (data) {
           popularMoviesList = data.movies;
           selectedPage = data.currentPage;
           totalPages = data.totalPages;

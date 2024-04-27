@@ -5,7 +5,6 @@ import 'package:tmdb_movies_app/core/failures/failure.dart';
 import 'package:tmdb_movies_app/movies/domain/repository/base_movies_repository.dart';
 
 import '../../data/models/movie_model/movie_model.dart';
-import '../entities/movie_entity.dart';
 
 class GetPopularMoviesUseCase
     extends BaseUseCase<MoviesDataModel, PopularMoviesParameters> {
@@ -28,8 +27,7 @@ class PopularMoviesParameters extends Equatable {
   });
 
   @override
-  List<Object> get props =>
-      [
+  List<Object> get props => [
         pageNumber,
       ];
 }

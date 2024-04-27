@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
 
 import '../../movies/domain/entities/movie_entity.dart';
@@ -8,7 +9,6 @@ List<Movie> locallySavedMovies = [];
 
 Future<void> openMoviesBox() async {
   localMoviesBox ??= await Hive.openBox(localMoviesBoxName);
-  print('opened');
 }
 
 Future<void> saveMovies({
@@ -16,13 +16,10 @@ Future<void> saveMovies({
 }) async {
   await openMoviesBox();
   await localMoviesBox.put(localMoviesKey, movies);
-  print('saved');
-  getSavedMovies();
 }
 
 Future<void> getSavedMovies() async {
   await openMoviesBox();
-  print('opened from get');
   try {
     List<dynamic> list = localMoviesBox.get(localMoviesKey) ?? [];
     if (list != null && list.isNotEmpty) {
@@ -36,12 +33,10 @@ Future<void> getSavedMovies() async {
         );
         locallySavedMovies.add(movie);
       }
-      print(list[0].title);
     }
   } catch (e) {
-    print(e.toString());
+    if (kDebugMode) {
+      print(e.toString());
+    }
   }
-  print('fetched');
-  print('locallySavedMovies' + locallySavedMovies.toString());
-  print(locallySavedMovies[0].title);
 }

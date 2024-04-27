@@ -1,5 +1,4 @@
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
@@ -54,9 +53,9 @@ class MovieDetailsScreen extends StatelessWidget {
                 ),
                 SliverToBoxAdapter(
                   child: cubit.detailedMovie == null
-                      ? Padding(
-                          padding: const EdgeInsets.only(top: 200.0),
-                          child: const Center(
+                      ? const Padding(
+                          padding: EdgeInsets.only(top: 200.0),
+                          child: Center(
                             child: CircularProgressIndicator(
                               color: Colors.white,
                             ),
@@ -74,13 +73,13 @@ class MovieDetailsScreen extends StatelessWidget {
                                     fontSize: 26,
                                     fontWeight: FontWeight.bold),
                               ),
-                              Gap(10),
+                              const Gap(10),
                               StaticRatingBarWidget(
                                 rating:
                                     (cubit.detailedMovie?.voteAverage ?? 0.0) /
                                         2,
                               ),
-                              Gap(10),
+                              const Gap(10),
                               Text(
                                 '${AppStrings.genres}: ${(cubit.detailedMovie?.genres.map((e) => e.name).toList().join(', ') ?? '')}',
                                 style: const TextStyle(
@@ -89,7 +88,7 @@ class MovieDetailsScreen extends StatelessWidget {
                                   fontWeight: FontWeight.w400,
                                 ),
                               ),
-                              Gap(10),
+                              const Gap(10),
                               Text(
                                 cubit.detailedMovie?.overview ?? '',
                                 style: const TextStyle(

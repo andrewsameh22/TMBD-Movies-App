@@ -1,7 +1,7 @@
 import '../../../domain/entities/movie_entity.dart';
 
 class MoviesDataModel extends MoviesDataEntity {
-  MoviesDataModel({
+  const MoviesDataModel({
     required super.movies,
     required super.currentPage,
     required super.totalPages,

@@ -1,5 +1,4 @@
 import 'package:get_it/get_it.dart';
-import 'package:tmdb_movies_app/movies/data/datasource/base_movies_local_data_source.dart';
 import 'package:tmdb_movies_app/movies/data/repository/movies_repository.dart';
 import 'package:tmdb_movies_app/movies/domain/repository/base_movies_repository.dart';
 import 'package:tmdb_movies_app/movies/domain/usecases/get_movie_details_usecase.dart';

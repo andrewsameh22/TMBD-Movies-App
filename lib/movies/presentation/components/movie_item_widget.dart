@@ -35,21 +35,19 @@ class MovieItemWidget extends StatelessWidget {
         },
         child: Row(
           children: [
-            Container(
-              child: ClipRRect(
-                borderRadius: const BorderRadius.all(Radius.circular(8.0)),
-                child: Hero(
-                  tag: heroTag,
-                  child: FancyShimmerImage(
-                    imageUrl: ApiConstants.imageUrl(movie?.backdropPath ?? ''),
-                    boxFit: BoxFit.cover,
-                    height: 150,
-                    width: 150.0,
-                  ),
+            ClipRRect(
+              borderRadius: const BorderRadius.all(Radius.circular(8.0)),
+              child: Hero(
+                tag: heroTag,
+                child: FancyShimmerImage(
+                  imageUrl: ApiConstants.imageUrl(movie?.backdropPath ?? ''),
+                  boxFit: BoxFit.cover,
+                  height: 150,
+                  width: 150.0,
                 ),
               ),
             ),
-            Gap(
+            const Gap(
               10,
             ),
             Expanded(
@@ -59,17 +57,17 @@ class MovieItemWidget extends StatelessWidget {
                   Text(
                     movie?.title ?? '',
                     maxLines: 1,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 16,
                       overflow: TextOverflow.ellipsis,
                       color: Colors.white,
                     ),
                   ),
-                  Gap(15),
+                  const Gap(15),
                   Text(
                     movie?.releaseDate ?? '',
                     maxLines: 1,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 16,
                       overflow: TextOverflow.ellipsis,
                       color: Colors.white,

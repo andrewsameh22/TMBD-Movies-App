@@ -29,8 +29,8 @@ class MoviesApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.grey.shade900,
         appBarTheme: AppBarTheme(
           color: Colors.grey.shade800,
-          iconTheme: IconThemeData(color: Colors.white),
-          titleTextStyle: TextStyle(
+          iconTheme: const IconThemeData(color: Colors.white),
+          titleTextStyle: const TextStyle(
             color: Colors.white,
             fontSize: 16,
           ),

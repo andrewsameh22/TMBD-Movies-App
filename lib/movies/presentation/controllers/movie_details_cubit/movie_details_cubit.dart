@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 
 import '../../../domain/entities/movie_details_entity.dart';
-import '../../../domain/entities/movie_entity.dart';
 import '../../../domain/usecases/get_movie_details_usecase.dart';
 
 part 'movie_details_state.dart';
@@ -26,7 +25,6 @@ class MovieDetailsCubit extends Cubit<MovieDetailsState> {
     result.fold(
       (failure) => emit(GetMovieDetailsFailureState(message: failure.message)),
       (data) {
-        print(data);
         detailedMovie = data;
         emit(GetMovieDetailsSuccessState());
       },

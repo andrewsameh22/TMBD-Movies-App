@@ -4,13 +4,14 @@ class Genre extends Equatable {
   final String name;
   final int id;
 
-  Genre({
+  const Genre({
     required this.name,
     required this.id,
   });
 
   @override
-  List<Object> get props => [
+  List<Object> get props =>
+      [
         name,
         id,
       ];

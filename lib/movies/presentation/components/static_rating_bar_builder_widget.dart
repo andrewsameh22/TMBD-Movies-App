@@ -20,7 +20,7 @@ class StaticRatingBarWidget extends StatelessWidget {
           itemCount: 5,
           ignoreGestures: true,
           // textDirection: ,//adjust the directionality
-          itemBuilder: (context, _) => Icon(
+          itemBuilder: (context, _) => const Icon(
             Icons.star,
             color: Colors.amber,
           ),
@@ -28,7 +28,7 @@ class StaticRatingBarWidget extends StatelessWidget {
             print(rating);
           },
         ),
-        Gap(10),
+        const Gap(10),
         Text(
           rating.toStringAsFixed(1) ?? '',
           style: const TextStyle(

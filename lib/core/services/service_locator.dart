@@ -1,4 +1,5 @@
 import 'package:get_it/get_it.dart';
+import 'package:tmdb_movies_app/movies/data/datasource/base_movies_local_data_source.dart';
 import 'package:tmdb_movies_app/movies/data/repository/movies_repository.dart';
 import 'package:tmdb_movies_app/movies/domain/repository/base_movies_repository.dart';
 import 'package:tmdb_movies_app/movies/domain/usecases/get_movie_details_usecase.dart';
@@ -7,6 +8,7 @@ import 'package:tmdb_movies_app/movies/presentation/controllers/movie_details_cu
 import 'package:tmdb_movies_app/movies/presentation/controllers/movies_cubit/movies_cubit.dart';
 
 import '../../movies/data/datasource/base_movies_remote_data_source.dart';
+import '../../movies/data/datasource/movies_local_data_source.dart';
 import '../../movies/data/datasource/movies_remote_data_source.dart';
 
 final sl = GetIt.instance;
@@ -16,6 +18,7 @@ class ServiceLocator {
     ///Data Sources
     sl.registerLazySingleton<BaseMoviesRemoteDataSource>(
         () => MoviesRemoteDataSource());
+    sl.registerLazySingleton(() => MoviesLocalDataSource());
 
     ///Repositories
     sl.registerLazySingleton<BaseMoviesRepository>(
@@ -30,6 +33,7 @@ class ServiceLocator {
     ///Cubit
     sl.registerFactory(() => MoviesCubit(
           getPopularMoviesUseCase: sl(),
+          moviesLocalDataSource: sl(),
         ));
     sl.registerFactory(() => MovieDetailsCubit(
           getMovieDetailsUseCase: sl(),

@@ -1,4 +1,7 @@
 import 'package:equatable/equatable.dart';
+import 'package:hive/hive.dart';
+
+part 'movie_entity.g.dart';
 
 class MoviesDataEntity extends Equatable {
   final List<Movie> movies;
@@ -19,24 +22,32 @@ class MoviesDataEntity extends Equatable {
       ];
 }
 
-class Movie extends Equatable {
+@HiveType(typeId: 0)
+class Movie extends HiveObject {
+  @HiveField(0)
   final int id;
+
+  @HiveField(1)
   final String title;
+
+  @HiveField(2)
   final String releaseDate;
+
+  @HiveField(3)
   final String backdropPath;
 
-  const Movie({
+  Movie({
     required this.id,
     required this.title,
     required this.releaseDate,
     required this.backdropPath,
   });
 
-  @override
-  List<Object> get props => [
-        id,
-        title,
-        releaseDate,
-        backdropPath,
-      ];
+// @override
+// List<Object> get props => [
+//       id,
+//       title,
+//       releaseDate,
+//       backdropPath,
+//     ];
 }

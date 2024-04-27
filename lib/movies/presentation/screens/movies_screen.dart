@@ -48,6 +48,7 @@ class MoviesScreen extends StatelessWidget {
                           AppStrings.popularMovies,
                           style: TextStyle(
                             fontSize: 28,
+                            fontWeight: FontWeight.w600,
                             color: Colors.white,
                           ),
                         ),

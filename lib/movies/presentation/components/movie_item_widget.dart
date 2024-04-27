@@ -56,10 +56,11 @@ class MovieItemWidget extends StatelessWidget {
                 children: [
                   Text(
                     movie?.title ?? '',
-                    maxLines: 1,
+                    maxLines: 2,
                     style: const TextStyle(
-                      fontSize: 16,
+                      fontSize: 18,
                       overflow: TextOverflow.ellipsis,
+                      fontWeight: FontWeight.bold,
                       color: Colors.white,
                     ),
                   ),
@@ -70,6 +71,7 @@ class MovieItemWidget extends StatelessWidget {
                     style: const TextStyle(
                       fontSize: 16,
                       overflow: TextOverflow.ellipsis,
+                      fontWeight: FontWeight.w500,
                       color: Colors.white,
                     ),
                   ),

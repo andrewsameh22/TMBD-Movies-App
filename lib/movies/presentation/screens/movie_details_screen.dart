@@ -30,7 +30,6 @@ class MovieDetailsScreen extends StatelessWidget {
         builder: (context, state) {
           var cubit = MovieDetailsCubit.get(context);
           return Scaffold(
-            backgroundColor: Colors.grey.shade900,
             body: CustomScrollView(
               physics: const BouncingScrollPhysics(),
               slivers: [
@@ -69,9 +68,10 @@ class MovieDetailsScreen extends StatelessWidget {
                               Text(
                                 cubit.detailedMovie?.title ?? '',
                                 style: const TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 26,
-                                    fontWeight: FontWeight.bold),
+                                  color: Colors.white,
+                                  fontSize: 26,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                               const Gap(10),
                               StaticRatingBarWidget(
@@ -93,7 +93,7 @@ class MovieDetailsScreen extends StatelessWidget {
                                 cubit.detailedMovie?.overview ?? '',
                                 style: const TextStyle(
                                   color: Colors.white,
-                                  fontSize: 16,
+                                  fontSize: 18,
                                   fontWeight: FontWeight.w300,
                                 ),
                               ),

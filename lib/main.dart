@@ -9,6 +9,8 @@ import 'core/bloc_helper/my_bloc_observer.dart';
 import 'core/services/service_locator.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
+import 'core/styles/app_colors.dart';
+
 void main() async {
   ServiceLocator().init();
   Bloc.observer = MyBlocObserver();
@@ -26,9 +28,9 @@ class MoviesApp extends StatelessWidget {
       title: AppStrings.appName,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        scaffoldBackgroundColor: Colors.grey.shade900,
+        scaffoldBackgroundColor: AppColors.tmdbBlue,
         appBarTheme: AppBarTheme(
-          color: Colors.grey.shade800,
+          color: Color(0xff02457a),
           iconTheme: const IconThemeData(color: Colors.white),
           titleTextStyle: const TextStyle(
             color: Colors.white,

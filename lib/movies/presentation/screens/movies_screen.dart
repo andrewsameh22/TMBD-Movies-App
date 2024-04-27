@@ -24,7 +24,7 @@ class MoviesScreen extends StatelessWidget {
               body: RefreshIndicator(
                 onRefresh: () {
                   return cubit.fetchPopularMovies(
-                    page: 1,
+                    page: cubit.selectedPage,
                   );
                 },
                 child: CustomScrollView(

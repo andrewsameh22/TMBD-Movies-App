@@ -11,6 +11,8 @@ class GetPopularMoviesLoadingState extends MoviesState {}
 
 class GetPopularMoviesSuccessState extends MoviesState {}
 
+class GetLocalPopularMoviesSuccessState extends MoviesState {}
+
 class GetPopularMoviesFailureState extends MoviesState {
   final String message;
 
